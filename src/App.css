@@ -1,38 +1,210 @@
 .App {
+  padding: 20px;
+}
+
+h1 {
   text-align: center;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+/* WorkoutForm */
+.add-workout {
+  margin: 20px 0;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.inputs {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
+  margin-bottom: 10px;
+}
+
+.inputs input {
+  width: 100%;
+  max-width: 300px;
+  margin-bottom: 10px;
+  padding: 5px;
+}
+
+.add-workout-button {
+  text-align: center;
+}
+
+.add-workout-button button {
+  padding: 10px 20px;
+  background-color: #000000;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.add-workout-button button:hover {
+  opacity: 0.8;
+}
+
+/* WorkoutList */
+.workout-list {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.workout-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  padding: 5px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f7f7f7;
+}
+
+.buttons {
+  display: flex;
+}
+
+.edit-button,
+.delete-button {
+  padding: 5px 10px;
+  margin-right: 5px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-button {
+  background-color: #4caf50;
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
+.delete-button {
+  background-color: #f44336;
+  color: white;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.edit-button:hover,
+.delete-button:hover {
+  opacity: 0.8;
+}
+
+/* Statistics */
+.statistics {
+  margin-top: 30px;
+}
+
+.statistics h2 {
+  text-align: center;
+}
+
+/* Achievements */
+.achievements {
+  margin-top: 30px;
+}
+
+.achievements h2 {
+  text-align: center;
+}
+
+/* App */
+button {
+  cursor: pointer;
+}
+
+.page-buttons {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.page-buttons button {
+  font-size: 16px;
+  padding: 10px 20px;
+  margin: 0 5px;
+  background-color: #3498db;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.page-buttons button:hover {
+  background-color: #2980b9;
+}
+
+.page-buttons button:focus {
+  outline: none;
+}
+
+.page-buttons button.active {
+  background-color: #27ae60;
+}
+
+/* Editing */
+.edit-modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: #fff;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  padding: 20px;
+  border-radius: 5px;
+  z-index: 9999;
+}
+
+.edit-modal h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+}
+
+.edit-workout-form .form-group {
+  margin-bottom: 10px;
+}
+
+.edit-workout-form label {
+  display: block;
+  font-weight: bold;
+}
+
+.edit-workout-form input {
+  width: 100%;
+  padding: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.edit-workout-form .form-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+.edit-workout-form button {
+  font-size: 16px;
+  padding: 5px 10px;
+  border: none;
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  cursor: pointer;
+}
+
+.edit-workout-form button:first-child {
+  background-color: #4caf50;
+  color: #fff;
+  margin-right: 10px;
+}
+
+.edit-workout-form button:last-child {
+  background-color: #f44336;
+  color: #fff;
+}
+
+/* Hide the main content when edit modal is active */
+.edit-mode .page-buttons,
+.edit-mode .workout-form,
+.edit-mode .workout-list {
+  display: none;
 }
