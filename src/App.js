@@ -5,11 +5,13 @@ import WorkoutList from "./components/WorkoutList";
 import Statistics from "./components/Statistics";
 import Achievements from "./components/Achievements";
 import EditWorkoutForm from "./components/EditWorkoutForm";
+import History from "./components/History";
 
 function App() {
   const [workouts, setWorkouts] = useState([]);
   const [currentPage, setCurrentPage] = useState("workouts");
   const [editIndex, setEditIndex] = useState(null); // Track the index of the workout being edited
+  const [savedWorkouts, setSavedWorkouts] = useState([]);
 
   const addWorkout = (newWorkout) => {
     setWorkouts([...workouts, newWorkout]);
@@ -29,6 +31,15 @@ function App() {
     setEditIndex(null); // Clear the edit index after updating the workout
   };
 
+  const saveWorkouts = () => {
+    if (workouts.length === 0) {
+      alert("There are no completed exercises.");
+      return;
+    }
+    setSavedWorkouts([...savedWorkouts, workouts]);
+    setWorkouts([]); // Clear the logged workouts list after saving
+  };
+
   const handlePageChange = (page) => {
     setCurrentPage(page);
     setEditIndex(null); // Clear the edit index when switching pages
@@ -43,6 +54,12 @@ function App() {
           onClick={() => handlePageChange("workouts")}
         >
           Workouts
+        </button>
+        <button
+          className={currentPage === "history" ? "active" : ""}
+          onClick={() => handlePageChange("history")}
+        >
+          History
         </button>
         <button
           className={currentPage === "statistics" ? "active" : ""}
@@ -68,11 +85,15 @@ function App() {
               onDeleteWorkout={deleteWorkout}
               onEditWorkout={setEditIndex}
             />
+            <button className="save-button" onClick={saveWorkouts}>
+              Save
+            </button>
           </div>
         </>
       )}
       {currentPage === "statistics" && <Statistics workouts={workouts} />}
       {currentPage === "achievements" && <Achievements workouts={workouts} />}
+      {currentPage === "history" && <History savedWorkouts={savedWorkouts} />}
       {editIndex !== null && (
         <div className="edit-modal">
           <EditWorkoutForm

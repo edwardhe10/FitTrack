@@ -3,7 +3,7 @@ import React from "react";
 const WorkoutList = ({ workouts, onEditWorkout, onDeleteWorkout }) => {
   return (
     <div className="workout-list">
-      <h2>Logged Workouts</h2>
+      <h2>Logged Exercises</h2>
       {workouts.map((workout, index) => (
         <div key={index} className="workout-item">
           <strong>{workout.exercise}</strong> Set #{workout.setNumber} - Weight:{" "}
