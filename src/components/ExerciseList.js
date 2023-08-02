@@ -6,8 +6,8 @@ const ExerciseList = ({ exercises, onEditExercise, onDeleteExercise }) => {
       <h2>Logged Exercises</h2>
       {exercises.map((exercise, index) => (
         <div key={index} className="exercise-item">
-          <strong>{exercise.exerciseName}</strong> Set #{exercise.setNumber} - Weight:{" "}
-          {exercise.weight} lbs - Reps: {exercise.reps}
+          <strong>{exercise.exerciseName}</strong> Set #{exercise.setNumber} -
+          Weight: {exercise.weight} lbs - Reps: {exercise.reps}
           <div className="buttons">
             <button
               className="edit-button"

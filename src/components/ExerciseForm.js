@@ -28,21 +28,18 @@ const ExerciseForm = ({ onAddExercise }) => {
     if (!exerciseName) {
       alert("Please enter an exercise name.");
       return;
-    }
-    else if (!weight) {
+    } else if (!weight) {
       alert("Please enter a weight (lbs).");
       return;
-    }
-    else if (!reps) {
+    } else if (!reps) {
       alert("Please enter the number of reps.");
       return;
-    }
-    else if (!setNumber) {
+    } else if (!setNumber) {
       alert("Please enter the set number.");
       return;
     }
 
-    // Create a new workout object with the provided details
+    // Create a new exercise object with the provided details
     const newExercise = {
       exerciseName,
       weight,
@@ -50,7 +47,6 @@ const ExerciseForm = ({ onAddExercise }) => {
       setNumber,
     };
 
-    // Call the parent function to add the new workout to the list
     onAddExercise(newExercise);
 
     setExerciseName("");

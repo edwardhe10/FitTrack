@@ -1,7 +1,6 @@
 import React from "react";
 
 const Achievements = ({ savedWorkouts }) => {
-  // Calculate and determine if the user achieved any milestones
   const tenWorkoutsCompleted = savedWorkouts.length >= 10;
 
   return (
