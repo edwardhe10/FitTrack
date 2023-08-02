@@ -1,43 +1,48 @@
 import "./App.css";
 import React, { useState } from "react";
-import WorkoutForm from "./components/WorkoutForm";
-import WorkoutList from "./components/WorkoutList";
+import ExerciseForm from "./components/ExerciseForm";
+import ExerciseList from "./components/ExerciseList";
 import Statistics from "./components/Statistics";
 import Achievements from "./components/Achievements";
-import EditWorkoutForm from "./components/EditWorkoutForm";
+import EditExerciseForm from "./components/EditExerciseForm";
 import History from "./components/History";
 
 function App() {
-  const [workouts, setWorkouts] = useState([]);
-  const [currentPage, setCurrentPage] = useState("workouts");
-  const [editIndex, setEditIndex] = useState(null); // Track the index of the workout being edited
+  const [exercises, setExercises] = useState([]);
+  const [currentPage, setCurrentPage] = useState("workout");
+  const [editIndex, setEditIndex] = useState(null); // Track the index of the exercise being edited
   const [savedWorkouts, setSavedWorkouts] = useState([]);
 
-  const addWorkout = (newWorkout) => {
-    setWorkouts([...workouts, newWorkout]);
+  const addExercise = (newExercise) => {
+    setExercises([...exercises, newExercise]);
   };
 
-  const deleteWorkout = (index) => {
-    const updatedWorkouts = [...workouts];
-    // Start at index and remove only 1, so removes the workout at index
-    updatedWorkouts.splice(index, 1);
-    setWorkouts(updatedWorkouts);
+  const deleteExercise = (index) => {
+    const updatedExercises = [...exercises];
+    // Start at index and remove only 1, so removes the exercise at index
+    updatedExercises.splice(index, 1);
+    setExercises(updatedExercises);
   };
 
-  const editWorkout = (index, updatedWorkout) => {
-    const updatedWorkouts = [...workouts];
-    updatedWorkouts[index] = updatedWorkout;
-    setWorkouts(updatedWorkouts);
-    setEditIndex(null); // Clear the edit index after updating the workout
+  const editExercise = (index, updatedExercise) => {
+    const updatedExercises = [...exercises];
+    updatedExercises[index] = updatedExercise;
+    setExercises(updatedExercises);
+    setEditIndex(null); // Clear the edit index after updating the exercise
   };
 
-  const saveWorkouts = () => {
-    if (workouts.length === 0) {
+  const saveWorkout = () => {
+    if (exercises.length === 0) {
       alert("There are no completed exercises.");
       return;
     }
-    setSavedWorkouts([...savedWorkouts, workouts]);
-    setWorkouts([]); // Clear the logged workouts list after saving
+
+    const inputDate = prompt("Enter the date (e.g., January 1, 1990):");
+    if (inputDate) {
+      const savedWorkoutData = { date: inputDate, exercises };
+      setSavedWorkouts([...savedWorkouts, savedWorkoutData]);
+      setExercises([]); // Clear the logged exercises list after saving
+    }
   };
 
   const handlePageChange = (page) => {
@@ -50,10 +55,10 @@ function App() {
       <h1>FitTrack</h1>
       <div className="page-buttons">
         <button
-          className={currentPage === "workouts" ? "active" : ""}
-          onClick={() => handlePageChange("workouts")}
+          className={currentPage === "workout" ? "active" : ""}
+          onClick={() => handlePageChange("workout")}
         >
-          Workouts
+          Workout
         </button>
         <button
           className={currentPage === "history" ? "active" : ""}
@@ -74,31 +79,37 @@ function App() {
           Achievements
         </button>
       </div>
-      {currentPage === "workouts" && (
+      {currentPage === "workout" && (
         <>
-          <div className="workout-form">
-            <WorkoutForm onAddWorkout={addWorkout} />
+          <div className="exercise-form">
+            <ExerciseForm onAddExercise={addExercise} />
           </div>
-          <div className="workout-list">
-            <WorkoutList
-              workouts={workouts}
-              onDeleteWorkout={deleteWorkout}
-              onEditWorkout={setEditIndex}
+          <div className="exercise-list">
+            <ExerciseList
+              exercises={exercises}
+              onDeleteExercise={deleteExercise}
+              onEditExercise={setEditIndex}
             />
-            <button className="save-button" onClick={saveWorkouts}>
+            <button className="save-button" onClick={saveWorkout}>
               Save
             </button>
           </div>
         </>
       )}
-      {currentPage === "statistics" && <Statistics workouts={workouts} />}
-      {currentPage === "achievements" && <Achievements workouts={workouts} />}
+      {currentPage === "statistics" && (
+        <Statistics savedWorkouts={savedWorkouts} />
+      )}
+      {currentPage === "achievements" && (
+        <Achievements savedWorkouts={savedWorkouts} />
+      )}
       {currentPage === "history" && <History savedWorkouts={savedWorkouts} />}
       {editIndex !== null && (
         <div className="edit-modal">
-          <EditWorkoutForm
-            workout={workouts[editIndex]}
-            onSave={(updatedWorkout) => editWorkout(editIndex, updatedWorkout)}
+          <EditExerciseForm
+            exercise={exercises[editIndex]}
+            onSave={(updatedExercise) =>
+              editExercise(editIndex, updatedExercise)
+            }
             onCancel={() => setEditIndex(null)}
           />
         </div>

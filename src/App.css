@@ -6,8 +6,8 @@ h1 {
   text-align: center;
 }
 
-/* WorkoutForm */
-.add-workout {
+/* ExerciseForm */
+.add-exercise {
   margin: 20px 0;
 }
 
@@ -25,11 +25,11 @@ h1 {
   padding: 5px;
 }
 
-.add-workout-button {
+.add-exercise-button {
   text-align: center;
 }
 
-.add-workout-button button {
+.add-exercise-button button {
   padding: 10px 20px;
   background-color: #000000;
   color: white;
@@ -39,17 +39,17 @@ h1 {
   font-size: 16px;
 }
 
-.add-workout-button button:hover {
+.add-exercise-button button:hover {
   opacity: 0.8;
 }
 
-/* WorkoutList */
-.workout-list {
+/* ExerciseList */
+.exercise-list {
   margin-top: 30px;
   text-align: center;
 }
 
-.workout-item {
+.exercise-item {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -102,7 +102,6 @@ h1 {
 .save-button:hover {
   background-color: #0fa231;
 }
-
 
 /* Statistics */
 .statistics {
@@ -175,16 +174,16 @@ button {
   margin-bottom: 20px;
 }
 
-.edit-workout-form .form-group {
+.edit-exercise-form .form-group {
   margin-bottom: 10px;
 }
 
-.edit-workout-form label {
+.edit-exercise-form label {
   display: block;
   font-weight: bold;
 }
 
-.edit-workout-form input {
+.edit-exercise-form input {
   width: 100%;
   padding: 5px;
   font-size: 16px;
@@ -192,13 +191,13 @@ button {
   border-radius: 5px;
 }
 
-.edit-workout-form .form-buttons {
+.edit-exercise-form .form-buttons {
   display: flex;
   justify-content: space-between;
   margin-top: 20px;
 }
 
-.edit-workout-form button {
+.edit-exercise-form button {
   font-size: 16px;
   padding: 5px 10px;
   border: none;
@@ -207,20 +206,24 @@ button {
   cursor: pointer;
 }
 
-.edit-workout-form button:first-child {
+.edit-exercise-form button:first-child {
   background-color: #4caf50;
   color: #fff;
   margin-right: 10px;
 }
 
-.edit-workout-form button:last-child {
+.edit-exercise-form button:last-child {
   background-color: #f44336;
   color: #fff;
 }
 
 /* Hide the main content when edit modal is active */
 .edit-mode .page-buttons,
-.edit-mode .workout-form,
-.edit-mode .workout-list {
+.edit-mode .exercise-form,
+.edit-mode .exercise-list {
   display: none;
+}
+
+.workout-history h2 {
+  text-align: center;
 }

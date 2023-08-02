@@ -4,21 +4,15 @@ const History = ({ savedWorkouts }) => {
   return (
     <div className="workout-history">
       <h2>Workout History</h2>
-      {savedWorkouts.map((workouts, index) => (
+      {savedWorkouts.map((savedWorkoutData, index) => (
         <div key={index}>
           <h3>
-            {new Date(Date.now()).toLocaleString("en-CA", {
-              month: "long",
-              day: "numeric",
-              year: "numeric",
-              hour: "2-digit",
-              minute: "2-digit",
-            })}
+            {savedWorkoutData.date}
           </h3>
-          {workouts.map((workout, i) => (
+          {savedWorkoutData.exercises.map((exercise, i) => (
             <div key={i}>
-              <strong>{workout.exercise}</strong> Set #{workout.setNumber} -
-              Weight: {workout.weight} lbs - Reps: {workout.reps}
+              <strong>{exercise.exerciseName}</strong> Set #{exercise.setNumber} -
+              Weight: {exercise.weight} lbs - Reps: {exercise.reps}
             </div>
           ))}
         </div>

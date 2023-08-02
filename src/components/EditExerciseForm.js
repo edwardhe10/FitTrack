@@ -1,34 +1,34 @@
 import React, { useState } from "react";
 
-const EditWorkoutForm = ({ workout, onSave, onCancel }) => {
-  const [exercise, setExercise] = useState(workout.exercise);
-  const [weight, setWeight] = useState(workout.weight);
-  const [reps, setReps] = useState(workout.reps);
-  const [setNumber, setSetNumber] = useState(workout.setNumber);
+const EditExerciseForm = ({ exercise, onSave, onCancel }) => {
+  const [exerciseName, setExerciseName] = useState(exercise.exerciseName);
+  const [weight, setWeight] = useState(exercise.weight);
+  const [reps, setReps] = useState(exercise.reps);
+  const [setNumber, setSetNumber] = useState(exercise.setNumber);
 
   const handleSave = () => {
-    // Create an updated workout object with the edited details
-    const updatedWorkout = {
-      ...workout,
-      exercise,
+    // Create an updated exercise object with the edited details
+    const updatedExercise = {
+      ...exercise,
+      exerciseName,
       weight,
       reps,
       setNumber,
     };
 
-    onSave(updatedWorkout);
+    onSave(updatedExercise);
   };
 
   return (
-    <div className="edit-workout-form">
-      <h3>Edit Workout</h3>
+    <div className="edit-exercise-form">
+      <h3>Edit Exercise</h3>
       <div className="form-group">
         <label htmlFor="exercise">Exercise Name:</label>
         <input
           type="text"
           id="exercise"
-          value={exercise}
-          onChange={(e) => setExercise(e.target.value)}
+          value={exerciseName}
+          onChange={(e) => setExerciseName(e.target.value)}
         />
       </div>
       <div className="form-group">
@@ -66,4 +66,4 @@ const EditWorkoutForm = ({ workout, onSave, onCancel }) => {
   );
 };
 
-export default EditWorkoutForm;
+export default EditExerciseForm;

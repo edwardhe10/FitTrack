@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 
-const WorkoutForm = ({ onAddWorkout }) => {
-  const [exercise, setExercise] = useState("");
+const ExerciseForm = ({ onAddExercise }) => {
+  const [exerciseName, setExerciseName] = useState("");
   const [weight, setWeight] = useState("");
   const [reps, setReps] = useState("");
   const [setNumber, setSetNumber] = useState("");
 
-  const handleExerciseChange = (event) => {
-    setExercise(event.target.value);
+  const handleExerciseNameChange = (event) => {
+    setExerciseName(event.target.value);
   };
 
   const handleWeightChange = (event) => {
@@ -22,33 +22,51 @@ const WorkoutForm = ({ onAddWorkout }) => {
     setSetNumber(event.target.value);
   };
 
-  const handleAddWorkout = () => {
+  const handleAddExercise = (event) => {
+    event.preventDefault();
+
+    if (!exerciseName) {
+      alert("Please enter an exercise name.");
+      return;
+    }
+    else if (!weight) {
+      alert("Please enter a weight (lbs).");
+      return;
+    }
+    else if (!reps) {
+      alert("Please enter the number of reps.");
+      return;
+    }
+    else if (!setNumber) {
+      alert("Please enter the set number.");
+      return;
+    }
+
     // Create a new workout object with the provided details
-    const newWorkout = {
-      exercise,
+    const newExercise = {
+      exerciseName,
       weight,
       reps,
       setNumber,
     };
 
     // Call the parent function to add the new workout to the list
-    onAddWorkout(newWorkout);
+    onAddExercise(newExercise);
 
-    // Clear input fields after adding a workout
-    setExercise("");
+    setExerciseName("");
     setWeight("");
     setReps("");
     setSetNumber("");
   };
 
   return (
-    <div className="add-workout">
+    <div className="add-exercise">
       <div className="inputs">
         <input
           type="text"
           placeholder="Exercise Name"
-          value={exercise}
-          onChange={handleExerciseChange}
+          value={exerciseName}
+          onChange={handleExerciseNameChange}
         />
         <input
           type="number"
@@ -69,11 +87,11 @@ const WorkoutForm = ({ onAddWorkout }) => {
           onChange={handleSetNumberChange}
         />
       </div>
-      <div className="add-workout-button">
-        <button onClick={handleAddWorkout}>Add Workout</button>
+      <div className="add-exercise-button">
+        <button onClick={handleAddExercise}>Add Exercise</button>
       </div>
     </div>
   );
 };
 
-export default WorkoutForm;
+export default ExerciseForm;
