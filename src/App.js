@@ -36,12 +36,17 @@ function App() {
       alert("There are no completed exercises.");
       return;
     }
-
-    const inputDate = prompt("Enter the date (e.g., January 1, 1990):");
-    if (inputDate) {
-      const savedWorkoutData = { date: inputDate, exercises };
-      setSavedWorkouts([...savedWorkouts, savedWorkoutData]);
-      setExercises([]); // Clear the logged exercises list after saving
+    // Confirm
+    const confirmed = window.confirm(
+      "Are you sure you want to save the workout?"
+    );
+    if (confirmed) {
+      const inputDate = prompt("Enter the date (e.g., January 1, 1990):"); // Ask for date
+      if (inputDate) {
+        const savedWorkoutData = { date: inputDate, exercises };
+        setSavedWorkouts([...savedWorkouts, savedWorkoutData]);
+        setExercises([]); // Clear the logged exercises list after saving
+      }
     }
   };
 
@@ -91,7 +96,7 @@ function App() {
               onEditExercise={setEditIndex}
             />
             <button className="save-button" onClick={saveWorkout}>
-              Save
+              Save Workout
             </button>
           </div>
         </>
