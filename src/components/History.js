@@ -10,7 +10,7 @@ const History = ({ savedWorkouts }) => {
           {savedWorkoutData.exercises.map((exercise, i) => (
             <div key={i}>
               <strong>{exercise.exerciseName}</strong> Set #{exercise.setNumber}{" "}
-              - Weight: {exercise.weight} lbs - Reps: {exercise.reps}
+              - {exercise.weight} lbs x {exercise.reps}
             </div>
           ))}
         </div>
