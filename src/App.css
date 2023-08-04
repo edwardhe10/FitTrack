@@ -227,3 +227,23 @@ button {
 .workout-history h2 {
   text-align: center;
 }
+
+/* History */
+.workout-history {
+  margin-top: 20px;
+}
+
+.workout-history h3 {
+  display: inline-block;
+  margin-right: 10px;
+}
+
+.workout-history button {
+  display: inline-block;
+  background-color: #f44336;
+  color: white;
+  border-radius: 8px;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+}

@@ -24,6 +24,13 @@ function App() {
     setExercises(updatedExercises);
   };
 
+  const deleteWorkout = (index) => {
+    // Same logic as deleteExercise
+    const updatedSavedWorkouts = [...savedWorkouts];
+    updatedSavedWorkouts.splice(index, 1);
+    setSavedWorkouts(updatedSavedWorkouts);
+  };
+
   const editExercise = (index, updatedExercise) => {
     const updatedExercises = [...exercises];
     updatedExercises[index] = updatedExercise;
@@ -107,7 +114,12 @@ function App() {
       {currentPage === "achievements" && (
         <Achievements savedWorkouts={savedWorkouts} />
       )}
-      {currentPage === "history" && <History savedWorkouts={savedWorkouts} />}
+      {currentPage === "history" && (
+        <History
+          savedWorkouts={savedWorkouts}
+          onDeleteWorkout={deleteWorkout}
+        />
+      )}
       {editIndex !== null && (
         <div className="edit-modal">
           <EditExerciseForm
