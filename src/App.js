@@ -48,9 +48,14 @@ function App() {
       "Are you sure you want to save the workout?"
     );
     if (confirmed) {
+      const inputWorkoutName = prompt("Enter the workout name:"); // Ask for workout name
       const inputDate = prompt("Enter the date (e.g., January 1, 1990):"); // Ask for date
-      if (inputDate) {
-        const savedWorkoutData = { date: inputDate, exercises };
+      if (inputDate && inputWorkoutName) {
+        const savedWorkoutData = {
+          date: inputDate,
+          workoutName: inputWorkoutName,
+          exercises,
+        };
         setSavedWorkouts([...savedWorkouts, savedWorkoutData]);
         setExercises([]); // Clear the logged exercises list after saving
       }

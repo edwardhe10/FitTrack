@@ -58,6 +58,8 @@ h1 {
   border: 1px solid #ccc;
   border-radius: 5px;
   background-color: #f7f7f7;
+  margin-left: 60px;
+  margin-right: 60px;
 }
 
 .buttons {
@@ -106,6 +108,7 @@ h1 {
 /* Statistics */
 .statistics {
   margin-top: 30px;
+  text-align: center;
 }
 
 .statistics h2 {
@@ -115,6 +118,7 @@ h1 {
 /* Achievements */
 .achievements {
   margin-top: 30px;
+  text-align: center;
 }
 
 .achievements h2 {
@@ -231,6 +235,7 @@ button {
 /* History */
 .workout-history {
   margin-top: 20px;
+  text-align: center;
 }
 
 .workout-history h3 {
